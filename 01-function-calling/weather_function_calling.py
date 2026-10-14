@@ -9,12 +9,16 @@ Cách chạy:
     python weather_function_calling.py
 """
 
+from pathlib import Path
+from dotenv import load_dotenv
+
 from google import genai
 from google.genai import types
 
+load_dotenv(Path(__file__).resolve().parents[1] / ".env", encoding="utf-8-sig")
 client = genai.Client()
 
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.1-flash-lite"
 
 SYSTEM_INSTRUCTION = (
     "Bạn là trợ lý thời tiết thân thiện, trả lời bằng tiếng Việt tự nhiên. "

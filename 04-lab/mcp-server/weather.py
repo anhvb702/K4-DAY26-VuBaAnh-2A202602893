@@ -1,4 +1,6 @@
 from typing import Any
+from pathlib import Path
+from dotenv import load_dotenv
 import asyncio
 import httpx
 import os
@@ -13,6 +15,7 @@ WEATHERAPI_BASE = "https://api.weatherapi.com/v1"
 USER_AGENT = "weather-app/1.0"
 
 # Get API key from environment variable
+load_dotenv(Path(__file__).resolve().parents[2] / ".env", encoding="utf-8-sig")
 API_KEY = os.getenv("WEATHERAPI_KEY")
 
 async def make_weather_request(endpoint: str, params: dict[str, str]) -> dict[str, Any] | None:
